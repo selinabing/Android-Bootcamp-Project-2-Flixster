@@ -1,6 +1,7 @@
-package com.codepath.flixster;
+package com.codepath.flixster.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,18 +10,53 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.codepath.flixster.R;
+import com.codepath.flixster.models.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by selinabing on 6/15/16.
  */
 public class MoviesAdapter extends ArrayAdapter<Movie> {
 
+    public MoviesAdapter(Context context, List<Movie> movies) {
+        super(context,android.R.layout.simple_list_item_1,movies);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Movie movie = getItem(position);
+
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.item_movie, parent, false);
+        }
+
+        // find the image view
+        ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivMovieImage);
+        // clear out image from convertView
+        ivImage.setImageResource(0);
+
+        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+        TextView tvOveriew = (TextView) convertView.findViewById(R.id.tvOverview);
+
+        //populate data
+        tvTitle.setText(movie.getOriginalTitle());
+        tvOveriew.setText(movie.getOverview());
+
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
+
+        return convertView;
+    }
+
+    /*
     public MoviesAdapter(Context context, ArrayList<Movie> movies) {
         super(context, R.layout.item_movie, movies);
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -51,4 +87,5 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
         // Return the completed view to render on screen
         return convertView;
     }
+    */
 }
