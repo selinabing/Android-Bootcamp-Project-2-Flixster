@@ -17,6 +17,7 @@
         android:text="Large Text"
         android:id="@+id/tvDetailedTitle"
         android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/tvDetailedReleaseDate"
         android:layout_toRightOf="@+id/ivDetailedMovieImage"
         android:layout_toEndOf="@+id/ivDetailedMovieImage" />
 
