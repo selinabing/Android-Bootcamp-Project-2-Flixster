@@ -1,8 +1,11 @@
 package com.codepath.flixster;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -70,6 +73,22 @@ public class MoviesActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
+
+        lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie currMovie = movies.get(position);
+                Intent i = new Intent(MoviesActivity.this, DetailedActivity.class);
+                i.putExtra("title",currMovie.getOriginalTitle());
+                i.putExtra("overview", currMovie.getOverview());
+                i.putExtra("posterPath", currMovie.getPosterPath());
+                i.putExtra("adult", currMovie.isAdult());
+                i.putExtra("releaseDate", currMovie.getReleaseDate());
+                i.putExtra("popularity", currMovie.getPopularity());
+                i.putExtra("voteAverage", currMovie.getVoteAverage());
+                startActivity(i);
             }
         });
     }
