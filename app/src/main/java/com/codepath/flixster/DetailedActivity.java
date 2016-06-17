@@ -63,7 +63,7 @@ public class DetailedActivity extends AppCompatActivity {
         pbPopularity.setProgress(popularity*2);
         Log.d("Debug",Float.toString(rating));
         rbDetailedRating.setRating(rating);
-        Picasso.with(this).load(posterPath).transform(new RoundedCornersTransformation(20,20)).placeholder(R.drawable.loading_vertical).into(ivDetailedImage);
+        Picasso.with(this).load(posterPath).transform(new RoundedCornersTransformation(20,20)).fit().centerCrop().placeholder(R.drawable.loading_vertical).into(ivDetailedImage);
     }
 
 
