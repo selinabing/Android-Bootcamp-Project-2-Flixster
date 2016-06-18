@@ -64,7 +64,11 @@ public class DetailedActivity extends AppCompatActivity {
         Log.d("Debug",Float.toString(rating));
         rbDetailedRating.setRating(rating);
         Picasso.with(this).load(posterPath).transform(new RoundedCornersTransformation(20,20)).fit().centerCrop().placeholder(R.drawable.loading_vertical).into(ivDetailedImage);
+
     }
 
+    public void onSubmit(View view){
+        this.finish();
+    }
 
 }

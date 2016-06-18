@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/tvDetailedOverview"
+        android:fontFamily="sans-serif"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
@@ -53,9 +54,7 @@
         android:clickable="false"
         android:padding="5dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/pbPopularity"
-        android:layout_alignEnd="@+id/pbPopularity" />
-
+        android:layout_toRightOf="@+id/ivDetailedMovieImage" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,4 +89,18 @@
         android:layout_below="@+id/tvDetailedTitle"
         android:layout_toRightOf="@+id/ivDetailedMovieImage"
         android:layout_toEndOf="@+id/ivDetailedMovieImage" />
+
+    <Button
+        style="@android:style/Widget.Holo.Button.Borderless.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:onClick="onSubmit"
+        android:id="@+id/btnDetailedBack"
+        android:minHeight="26dp"
+        android:minWidth="50dp"
+        android:background="@color/btnColor"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
